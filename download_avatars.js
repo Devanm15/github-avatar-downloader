@@ -43,7 +43,4 @@ getRepoContributors(owner, repo, function(err, result) {
 	if (repo === undefined) {
 		console.log("Error, second iput required.");
 	}
-
-	// console.log("Errors:", err);
-	// console.log("Result:", result);
 });
