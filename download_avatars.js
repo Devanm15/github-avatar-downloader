@@ -11,7 +11,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 			"/" +
 			repoName +
 			"/contributors",
-		headers: { "User-Agent": "request", Authorization: "Token" + token }
+		headers: { "User-Agent": "request" }
 	};
 	console.log(options);
 	request(options, function(err, res, body) {
@@ -23,8 +23,9 @@ function getRepoContributors(repoOwner, repoName, cb) {
 			console.log(parsedBody[i].avatar_url);
 		}
 	});
-	getRepoContributors("jquery", "jquery", function(err, result) {
-		console.log("Errors:", err);
-		console.log("Result:", result);
-	});
 }
+
+getRepoContributors("jquery", "jquery", function(err, result) {
+	console.log("Errors:", err);
+	console.log("Result:", result);
+});
