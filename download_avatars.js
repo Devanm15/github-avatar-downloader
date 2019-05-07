@@ -3,6 +3,9 @@ var fs = require("fs");
 var token = require("./secrets").GITHUB_TOKEN;
 console.log("Welcome to the GitHub Avatar Downloader!");
 
+var owner = process.argv[2];
+var repo = process.argv[3];
+
 function getRepoContributors(repoOwner, repoName, cb) {
 	var options = {
 		url:
@@ -36,7 +39,11 @@ function downloadImageByURL(url, filePath) {
 		.pipe(fs.createWriteStream(filePath));
 }
 
-getRepoContributors("jquery", "jquery", function(err, result) {
-	console.log("Errors:", err);
-	console.log("Result:", result);
+getRepoContributors(owner, repo, function(err, result) {
+	if (repo === undefined) {
+		console.log("Error, second iput required.");
+	}
+
+	// console.log("Errors:", err);
+	// console.log("Result:", result);
 });
