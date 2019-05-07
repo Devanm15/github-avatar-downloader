@@ -24,6 +24,14 @@ function getRepoContributors(repoOwner, repoName, cb) {
 		}
 	});
 }
+function downloadImageByURL(url, filePath) {
+	request
+		.get("https://avatars2.githubusercontent.com/u/2741?v=3&s=466")
+		.on("error", function(err) {
+			throw err;
+		})
+		.pipe(fs.createWriteStream("./avatars/kvirani.jpg"));
+}
 
 getRepoContributors("jquery", "jquery", function(err, result) {
 	console.log("Errors:", err);
